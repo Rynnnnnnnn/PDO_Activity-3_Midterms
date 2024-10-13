@@ -32,23 +32,24 @@
 			<input type="submit" name="insertNewStudentBtn">
 		</p>
 	</form>
+	<a href="testGetVariable.php?studentName=KryslerMartinez&yearLevel=ThirdYear">The Creator</a>
 
 	<table style="width:50%; margin-top: 50px;">
 	  <tr>
-	    <th>Student ID</th>
+	    <th>Application ID</th>
 	    <th>First Name</th>
 	    <th>Last Name</th>
 	    <th>Gender</th>
 	    <th>Section</th>
 	    <th>Dream Job</th>
 	    <th>Specialty</th>
-	    <th>Action</th>
+		<th>Actions</th>
 	  </tr>
 
 	  <?php $seeAllStudentRecords = seeAllStudentRecords($pdo); ?>
 	  <?php foreach ($seeAllStudentRecords as $row) { ?>
 	  <tr>
-	  	<td><?php echo $row['student_id']; ?></td>
+	  	<td><?php echo $row['application_id']; ?></td>
 	  	<td><?php echo $row['first_name']; ?></td>
 	  	<td><?php echo $row['last_name']; ?></td>
 	  	<td><?php echo $row['gender']; ?></td>
@@ -56,8 +57,8 @@
 	  	<td><?php echo $row['dream_job']; ?></td>
 	  	<td><?php echo $row['specialty']; ?></td>
 	  	<td>
-	  		<a href="editstudent.php?student_id=<?php echo $row['student_id'];?>">Edit</a>
-	  		<a href="deletestudent.php?student_id=<?php echo $row['student_id'];?>">Delete</a>
+	  		<a href="editapplication.php?application_id=<?php echo $row['application_id'];?>">Edit</a>
+	  		<a href="deleteapplication.php?application_id=<?php echo $row['application_id'];?>">Delete</a>
 	  	</td>
 	  </tr>
 	  <?php } ?>
