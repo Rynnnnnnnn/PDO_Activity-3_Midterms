@@ -8,7 +8,7 @@ if (isset($_POST['insertNewStudentBtn'])) {
 	$lastName = trim($_POST['lastName']);
 	$gender = trim($_POST['gender']);
 	$section = trim($_POST['section']);
-	$dream_job = trim($_POST['dream job']);
+	$dream_job = trim($_POST['dream_job']);
 	$specialty = trim($_POST['specialty']);
 
 	if (!empty($firstName) && !empty($lastName) && !empty($gender) && !empty($section)  && !empty($dream_job)  && !empty($specialty)) {
@@ -32,12 +32,12 @@ if (isset($_POST['insertNewStudentBtn'])) {
 
 
 if (isset($_POST['editStudentBtn'])) {
-	$student_id = $_GET['student_id'];
+	$application_id = $_GET['application_id'];
 	$firstName = trim($_POST['firstName']);
 	$lastName = trim($_POST['lastName']);
 	$gender = trim($_POST['gender']);
 	$section = trim($_POST['section']);
-	$dream_job = trim($_POST['dream job']);
+	$dream_job = trim($_POST['dreamJob']);
 	$specialty = trim($_POST['specialty']);
 
 	if (!empty($firstName) && !empty($lastName) && !empty($gender) && !empty($section)  && !empty($dream_job)  && !empty($specialty)) {
@@ -63,23 +63,19 @@ if (isset($_POST['editStudentBtn'])) {
 
 
 
+// Handle deleting a student
 if (isset($_POST['deleteStudentBtn'])) {
+    $application_id = $_GET['application_id']; // Get the application_id from the URL
+    $query = deleteAStudent($pdo, $application_id); // Call the defined function
 
-	$query = deleteAStudent($pdo, $_GET['student_id']);
-
-	if ($query) {
-		header("Location: ../index.php");
-	}
-	else {
-		echo "Deletion failed";
-	}
+    if ($query) {
+        header("Location: ../index.php");
+        exit(); // Always call exit after a header redirect
+    } else {
+        echo "Deletion failed";
+    }
 }
-
-
-
-
 ?>
-
 
 
 
